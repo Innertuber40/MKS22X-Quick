@@ -19,6 +19,9 @@ public class Quick {
 		}
 	}
 
+	//public void quicksort(int[] values) {
+	       //quicky(values, 0, values.length - 1);	
+
 	private static int partition(int[] values, int low, int high) {
 		int randPos = (int)(Math.random() * (high - low + 1) + low);
 		//System.out.println(randPos);
