@@ -1,17 +1,19 @@
 public class Quick {
 	public static int quickselect(int[] values, int k) {
-		return 52396;
+		return partition(values);
 	}
 
-	private int partition(int[] values, int n) {
+	private static int partition(int[] values) {
 		int randPos = (int)(Math.random() * values.length);
+		System.out.println(randPos);
 		int pivot = values[randPos];
+		System.out.println(pivot);
 		int start = 1;
 		int end = values.length - 1;
 		values[randPos] = values[0];
 		values[0] = pivot;
 		for (int i = 1; i < end; i++) {
-			current = values[i];
+			int current = values[i];
 			if (values[i] <= pivot) {
 				values[i] = values[start];
 				values[start] = current;
