@@ -10,5 +10,7 @@ public class Flash {
         for (int i = 0; i < 10000; i++) {
             test2[i] = (int)(Math.random() * 2);
         }
+        //System.out.println((int)(Math.random() * 2));
+        System.out.println(Quick.quickselect(test2, 5000));
     }
 }
