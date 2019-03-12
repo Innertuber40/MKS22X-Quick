@@ -6,16 +6,16 @@ public class Quick {
 			int parted = partition(values, start, end);
 			//System.out.println(parted);
 			if (parted < k) {
-				start = parted;
+				start = parted + 1;
 			} else if (parted > k) {
-				end = parted;
+				end = parted - 1;
 			} else {
 				return values[k];
 			}
-			/*for (int i = 0; i < values.length; i++) {
+			for (int i = 0; i < values.length; i++) {
 				System.out.print(values[i] + " ");
 			}
-			System.out.println(start + ", " + end);*/
+			System.out.println(start + ", " + end);
 		}
 	}
 
@@ -23,9 +23,12 @@ public class Quick {
 		int randPos = (int)(Math.random() * (high - low + 1) + low);
 		//System.out.println(randPos);
 		int pivot = values[randPos];
-		//System.out.println(pivot);
+		System.out.println(pivot);
 		int start = low + 1;
 		int end = high;
+		if (low == high) {
+			return low;
+		}
 		values[randPos] = values[low];
 		values[low] = pivot;
 		while (start != end) {
@@ -39,19 +42,19 @@ public class Quick {
 				//System.out.println(end);
 			}
 		}
-		if (values[end] > pivot) {
+		if (values[end] >= pivot) {
 			values[low] = values[end - 1];
 			values[end - 1] = pivot;
-			//System.out.println(end - 1);
+			System.out.println(end - 1);
 			return end - 1;
-		} else if (values[end] < pivot) {
+		} else /*if (values[end] < pivot) */{
 			values[low] = values[end];
 			values[end] = pivot;
-			//System.out.println(end);
+			System.out.println(end);
 			return end;
-		} else {
+		} /*else {
 			//System.out.println((int)(Math.round(Math.random())));
-			return (int)(end - Math.round(Math.random()));
-		}
+			return end - (int)(Math.round(Math.random()));
+		}*/
 	}
 }
