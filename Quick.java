@@ -12,14 +12,12 @@ public class Quick {
 		int end = values.length - 1;
 		values[randPos] = values[0];
 		values[0] = pivot;
-		for (int i = 1; i < end; i++) {
-			int current = values[i];
-			if (values[i] <= pivot) {
-				values[i] = values[start];
-				values[start] = current;
+		while (start != end) {
+			int current = values[start];
+			if (current <= pivot) {
 				start++;
-			} else if (values[i] > pivot) {
-				values[i] = values[end];
+			} else {
+				values[start] = values[end];
 				values[end] = current;
 				end--;
 			}
