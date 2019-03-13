@@ -19,8 +19,26 @@ public class Quick {
 		}
 	}
 
-	//public void quicksort(int[] values) {
-	       //quicky(values, 0, values.length - 1);	
+	public static void quicksort(int[] values) {
+	        quicky(values, 0, values.length - 1);
+	}
+	private static void quicky(int[] values, int low, int high) {
+		if (high - low <= 10) {
+			for (int i = low + 1; i < high; i++) {
+				int toInsert = values[i];
+				int j = i;
+				while (j > 0 && values[j - 1] > toInsert) {
+					values[j] = values[j - 1];
+					j--;
+				}
+				values[j] = toInsert;
+			}
+		}
+		int part = partition(values, low, high);
+		quicky(values, low, part);
+		quicky(values, part + 1, high);
+	}
+
 
 	private static int partition(int[] values, int low, int high) {
 		int randPos = (int)(Math.random() * (high - low + 1) + low);
