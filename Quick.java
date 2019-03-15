@@ -3,14 +3,18 @@ public class Quick {
 		int start = 0;
 		int end = values.length - 1;
 		while (true) {
-			int parted = partition(values, start, end);
-			//System.out.println(parted);
-			if (parted < k) {
-				start = parted + 1;
-			} else if (parted > k) {
-				end = parted - 1;
-			} else {
+			if (start == end) {
+				return values[start];
+			}
+			int[] parted = partition(values, start, end);
+			//System.out.println(parted[0]);
+			//System.out.println(parted[1]);
+			if (parted[0] <= k  && k <= parted[1]) {
 				return values[k];
+			} else if (k < parted[0]) {
+				end = parted[0] - 1;
+			} else {
+				start = parted[1];
 			}
 			/*for (int i = 0; i < values.length; i++) {
 				System.out.print(values[i] + " ");
@@ -41,21 +45,24 @@ public class Quick {
 	}
 
 
-	private static int partition(int[] values, int low, int high) {
+	private static int[] partition(int[] values, int low, int high) {
 		int randPos = (int)(Math.random() * (high - low + 1) + low);
 		//System.out.println(randPos);
 		int pivot = values[randPos];
 		//System.out.println(pivot);
 		int start = low + 1;
 		int end = high;
-		if (low == high) {
-			return low;
-		}
+		int less = start;
 		values[randPos] = values[low];
 		values[low] = pivot;
 		while (start != end) {
 			int current = values[start];
-			if (current <= pivot) {
+			if (current < pivot) {
+				values[start] = values[less];
+				values[less] = current;
+				less++;
+				start++;
+			} else if (current == pivot) {
 				start++;
 			} else {
 				values[start] = values[end];
@@ -64,19 +71,21 @@ public class Quick {
 				//System.out.println(end);
 			}
 		}
-		if (values[end] >= pivot) {
-			values[low] = values[end - 1];
-			values[end - 1] = pivot;
-			//System.out.println(end - 1);
-			return end - 1;
-		} else /*if (values[end] < pivot) */{
-			values[low] = values[end];
-			values[end] = pivot;
-			//System.out.println(end);
-			return end;
-		} /*else {
-			//System.out.println((int)(Math.round(Math.random())));
-			return end - (int)(Math.round(Math.random()));
-		}*/
+		if (values[start] > pivot) {
+			values[low] = values[less - 1];
+			values[less - 1] = pivot;
+		} else {
+			values[low] = values[start];
+			values[start] = pivot;
+		}
+		/*for (int i = 0; i < values.length; i++) {
+            System.out.print(values[i] + " ");
+		}
+		System.out.println();*/
+		int[] returns = new int[] {
+			less,
+			end
+		};
+		return returns;
 	}
 }
