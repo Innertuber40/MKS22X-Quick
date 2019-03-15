@@ -33,6 +33,7 @@ public class Quick {
 				}
 				values[j] = toInsert;
 			}
+			return;
 		}
 		int part = partition(values, low, high);
 		quicky(values, low, part);
