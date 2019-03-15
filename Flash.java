@@ -25,7 +25,7 @@ public class Flash {
             }
             //System.out.print(test2[i]);
         }
-        /*int[] test2point5 = new int[] {1, 4, 534, 1235, 6666, 74365, 222, -504, 607, -1, 4};
+        int[] test2point5 = new int[] {1, 4, 534, 1235, 6666, 74365, 222, -504, 607, -1, 4};
         Quick.quicksort(test2point5);
         for (int i = 0; i < test2point5.length; i++) {
             System.out.print(test2point5[i] + " ");
@@ -37,8 +37,8 @@ public class Flash {
         Quick.quicksort(test3);
         for (int i = 1; i < test3.length; i++) {
             if (test3[i] < test3[i - 1]) {
-                System.out.println(false);
+                System.out.println("false");
             }
-        }*/
+        }
     }
 }

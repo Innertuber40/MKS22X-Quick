@@ -39,9 +39,9 @@ public class Quick {
 			}
 			return;
 		}
-		int part = partition(values, low, high);
-		quicky(values, low, part - 1);
-		quicky(values, part + 1, high);
+		int[] part = partition(values, low, high);
+		quicky(values, low, part[0] - 1);
+		quicky(values, part[1], high);
 	}
 
 
