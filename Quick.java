@@ -24,7 +24,7 @@ public class Quick {
 	}
 	private static void quicky(int[] values, int low, int high) {
 		if (high - low <= 10) {
-			for (int i = low + 1; i < high; i++) {
+			for (int i = low + 1; i < high + 1; i++) {
 				int toInsert = values[i];
 				int j = i;
 				while (j > 0 && values[j - 1] > toInsert) {
@@ -36,7 +36,7 @@ public class Quick {
 			return;
 		}
 		int part = partition(values, low, high);
-		quicky(values, low, part);
+		quicky(values, low, part - 1);
 		quicky(values, part + 1, high);
 	}
 
